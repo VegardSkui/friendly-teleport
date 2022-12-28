@@ -1,0 +1,27 @@
+{
+    "schemaVersion": 1,
+    "id": "${id}",
+    "version": "${version}",
+
+    "name": "Friendly Teleport",
+    "authors": [
+        "Vegard Skui"
+    ],
+    "contact": {
+        "sources": "https://github.com/VegardSkui/friendly-teleport"
+    },
+
+    "environment": "server",
+    "entrypoints": {
+        "main": [
+            "com.vegardskui.friendlyteleport.FriendlyTeleport"
+        ]
+    },
+
+    "depends": {
+        "fabricloader": ">=${loader_version}",
+        "fabric-api": "*",
+        "minecraft": "~${minecraft_version}",
+        "java": ">=17"
+    }
+}
