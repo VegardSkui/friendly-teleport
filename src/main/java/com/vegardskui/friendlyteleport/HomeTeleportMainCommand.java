@@ -3,6 +3,7 @@ package com.vegardskui.friendlyteleport;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 
@@ -25,8 +26,7 @@ public class HomeTeleportMainCommand implements Command<ServerCommandSource> {
 
         // Write an error message to the user if no home was found
         if (location == null) {
-            player.sendMessage(Text.literal("ERROR: You have no home named main"));
-            return 0;
+            throw new SimpleCommandExceptionType(Text.literal("You have no home named main")).create();
         }
 
         player.teleport(player.server.getWorld(location.getDimension()), location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
