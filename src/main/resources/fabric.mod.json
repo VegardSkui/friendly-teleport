@@ -11,6 +11,8 @@
         "sources": "https://github.com/VegardSkui/friendly-teleport"
     },
 
+    "license": "MIT",
+
     "environment": "server",
     "entrypoints": {
         "main": [
