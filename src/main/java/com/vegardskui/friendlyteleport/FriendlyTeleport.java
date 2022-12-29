@@ -25,7 +25,9 @@ public class FriendlyTeleport implements ModInitializer {
             ).executes(new HomeSetMainCommand()));
 
             dispatcher.register(literal("home").then(
-                argument("name", StringArgumentType.word()).executes(new HomeTeleportCommand())
+                argument("name", StringArgumentType.word())
+                    .suggests(new HomeSuggestionProvider())
+                    .executes(new HomeTeleportCommand())
             ).executes(new HomeTeleportMainCommand()));
         });
 
