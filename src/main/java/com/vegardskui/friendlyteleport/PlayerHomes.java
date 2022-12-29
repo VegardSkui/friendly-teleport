@@ -52,4 +52,8 @@ public class PlayerHomes {
     public void put(String name, Location location) {
         this.homes.put(name, location);
     }
+
+    public Location remove(String name) {
+        return this.homes.remove(name);
+    }
 }

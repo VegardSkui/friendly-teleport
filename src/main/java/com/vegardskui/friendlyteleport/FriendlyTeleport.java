@@ -29,6 +29,12 @@ public class FriendlyTeleport implements ModInitializer {
                     .suggests(new HomeSuggestionProvider())
                     .executes(new HomeTeleportCommand())
             ).executes(new HomeTeleportMainCommand()));
+
+            dispatcher.register(literal("delhome").then(
+                argument("name", StringArgumentType.word())
+                    .suggests(new HomeSuggestionProvider())
+                    .executes(new HomeDeleteCommand())
+            ));
         });
 
         LOGGER.info("[FriendlyTeleport] Initialized");
