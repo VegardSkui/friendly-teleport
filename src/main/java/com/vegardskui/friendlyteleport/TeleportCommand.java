@@ -12,8 +12,7 @@ public class TeleportCommand implements Command<ServerCommandSource> {
         var source = context.getSource().getPlayerOrThrow();
         var target = EntityArgumentType.getPlayer(context, "target");
 
-        var targetWorld = target.server.getWorld(target.getWorld().getRegistryKey());
-        source.teleport(targetWorld, target.getX(), target.getY(), target.getZ(), target.getYaw(), target.getPitch());
+        source.teleport(target.getServerWorld(), target.getX(), target.getY(), target.getZ(), target.getYaw(), target.getPitch());
 
         target.sendMessage(source.getDisplayName().copy().append(" teleported to you!"));
         FriendlyTeleport.LOGGER.info("[FriendlyTeleport] " + source.getDisplayName().getString() + " teleported to " + target.getDisplayName().getString());
