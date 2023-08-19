@@ -2,12 +2,12 @@ plugins {
     id "fabric-loom" version "1.2-SNAPSHOT"
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
-
-archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -32,13 +32,16 @@ processResources {
 }
 
 java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
     withSourcesJar()
 }
 
 jar {
     from("LICENSE") {
         rename {
-            "${it}_${project.archivesBaseName}"
+            "${it}_${project.base.archivesName.get()}"
         }
     }
 }
